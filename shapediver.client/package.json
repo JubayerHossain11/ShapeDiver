@@ -1,0 +1,73 @@
+{
+  "name": "shapediver-create-react-app",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "./",
+  "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@mantine/core": "^7.4.1",
+    "@mantine/hooks": "^7.4.1",
+    "@shapediver/viewer": "2.12.1",
+    "@tabler/icons-react": "^2.46.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "6.21.2",
+    "react-scripts": "5.0.1",
+    "zustand": "^4.4.7"
+  },
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build",
+    "optimize": "tsc && vite optimize --force",
+    "preview": "vite preview",
+    "eslint": "eslint .",
+    "build-dev": "vite build --base=/dev/",
+    "build-staging": "vite build --base=/staging/",
+    "build-prod": "vite build --base=/prod/",
+    "publish-build-dev": "aws s3 sync ./dist s3://${BUCKET}/react-example/dev/ --region us-east-1",
+    "publish-build-staging": "aws s3 sync ./dist s3://${BUCKET}/react-example/staging/ --region us-east-1",
+    "publish-build-prod": "aws s3 sync ./dist s3://${BUCKET}/react-example/prod/ --region us-east-1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@shapediver/api.geometry-api-dto-v2": "^1.12.0",
+    "@testing-library/jest-dom": "^6.2.0",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.11.3",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint-plugin-react": "^7.33.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11",
+    "vite-plugin-svgr": "^4.2.0",
+    "vite-tsconfig-paths": "^4.2.3",
+    "web-vitals": "^3.5.1"
+  },
+  "lint-staged": {
+    "*.{js,json,yml,yaml,css,scss,ts,tsx,md}": [
+      "prettier --write"
+    ]
+  }
+}
