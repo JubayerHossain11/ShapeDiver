@@ -1,3 +1,5 @@
+using ShapeDiver.Server;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,6 +17,12 @@ builder.Services.AddCors(
         });
     }
 );
+
+builder.Services.AddScoped<DatabaseHelper>(provider =>
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnectionString");
+    return new DatabaseHelper(connectionString);
+});
 
 var app = builder.Build();
 

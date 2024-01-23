@@ -24,17 +24,14 @@ export default function ParametersAndExportsAccordionComponent({ parameters, exp
 	// get sorted list of parameter and export definitions
 	const sortedParamsAndExports = useSortedParametersAndExports(parameters, exports);
 
-    const url = 'https://example.com/api/endpoint'; // Replace with your actual API endpoint
-
-    
-    
+	const url = 'http://localhost:5093/api/Common/InsertParamiters'; // Replace with your actual API endpoint
 
 	const saveValue = async()=>{
 		const requestBody = {
-			'menuOption': JSON.parse(localStorage.getItem("menuOption")),
-			'seledModel': JSON.parse(localStorage.getItem("currentModel"))
+			'menuOption': JSON.stringify(localStorage.getItem("menuOption")),
+			'seledModel': JSON.stringify(localStorage.getItem("currentModel"))
 		};
-	
+		debugger;
 		try {
 		  const response = await fetch(url, {
 			method: 'POST',
@@ -49,7 +46,11 @@ export default function ParametersAndExportsAccordionComponent({ parameters, exp
 		  // Check if the request was successful (status code 2xx)
 		  if (response.ok) {
 			const data = await response.json();
-			console.log(data)
+			  if (data) {
+				  alert("Parameters added Successfully !")
+			  } else {
+				  alert("Error !")
+			  }
 		  } else {
 			console.error('Error:', response.statusText);
 		  }
